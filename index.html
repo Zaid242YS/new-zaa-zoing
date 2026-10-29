@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeKalb Zoning Compliance Checklist | Creed-to-Commerce™</title>
+<style>
+:root{--navy:#12304a;--navy2:#1d4568;--gold:#b8921f;--gold-l:#f3e7bd;--cream:#faf7ef;--ink:#1d2733;--mute:#5b6773;--line:#d9d4c5;--card:#ffffff;
+--ok:#1f7a4d;--ok-l:#dff3e8;--bad:#b3261e;--bad-l:#fbe4e2;--warn:#b86e00;--warn-l:#fdeccf;--miss:#2b5f9e;--miss-l:#dce9f8;--na:#6b7280;--na-l:#eceef1}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink)}
+header.brand{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;padding:14px 20px;border-bottom:4px solid var(--gold)}
+.brand-in{max-width:1180px;margin:auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.mark{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font-weight:700;color:var(--gold);font-family:Georgia,serif;font-size:15px;flex:none}
+.brand h1{margin:0;font-size:20px;font-family:Georgia,serif;letter-spacing:.2px}
+.brand .sub{font-size:12.5px;color:#d8e2ec}
+.brand .right{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.scorebar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.sb-in{max-width:1180px;margin:auto;padding:8px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.big{font-size:30px;font-weight:700;font-family:Georgia,serif;line-height:1}
+.meter{flex:1;min-width:200px}
+.track{position:relative;height:16px;border-radius:8px;background:#e8e4d6;overflow:visible}
+.fill{height:100%;border-radius:8px;background:var(--bad);transition:width .3s,background .3s}
+.mark95{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--navy)}
+.mark95::after{content:"95%";position:absolute;top:-15px;left:-10px;font-size:10px;color:var(--navy);font-weight:700}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px}
+.small{font-size:12.5px;color:var(--mute)}
+nav.tabs{max-width:1180px;margin:12px auto 0;padding:0 20px;display:flex;gap:4px;flex-wrap:wrap}
+nav.tabs button{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;color:var(--navy);font-size:14px}
+nav.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+main{max-width:1180px;margin:0 auto;padding:0 20px 40px}
+.panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:0 10px 10px 10px;padding:18px}
+.panel.on{display:block}
+h2{font-family:Georgia,serif;color:var(--navy);margin:0 0 4px}
+h3{color:var(--navy);margin:18px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+label{display:block;font-size:12.5px;font-weight:600;color:var(--mute);margin-bottom:3px}
+input,select,textarea{width:100%;padding:8px 10px;border:1px solid #c9c4b3;border-radius:7px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:56px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.btn{border:1px solid var(--navy);background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px}
+.btn.alt{background:#fff;color:var(--navy)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.btn.red{background:#fff;color:var(--bad);border-color:var(--bad)}
+.btn.sm{padding:4px 10px;font-size:12.5px}
+.btn:hover{filter:brightness(1.08)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.note{background:var(--gold-l);border-left:4px solid var(--gold);padding:10px 12px;border-radius:6px;font-size:13.5px;margin:10px 0}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin:10px 0}
+.cat{margin-top:18px;border-bottom:2px solid var(--gold);padding-bottom:3px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.cat b{font-family:Georgia,serif;color:var(--navy);font-size:17px}
+.item{border:1px solid var(--line);border-left:6px solid #bbb;border-radius:8px;padding:10px 12px;margin:8px 0;background:#fff}
+.item[data-st=c]{border-left-color:var(--ok)}.item[data-st=p]{border-left-color:var(--warn)}.item[data-st=n]{border-left-color:var(--bad)}.item[data-st=m]{border-left-color:var(--miss)}.item[data-st=x]{border-left-color:var(--na)}
+.it-top{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.it-text{font-weight:600;flex:1;min-width:240px}
+.w{font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--na-l);color:var(--na);margin-left:6px;white-space:nowrap}
+.w3{background:var(--bad-l);color:var(--bad)}.w2{background:var(--warn-l);color:var(--warn)}
+.seg{display:flex;gap:3px;flex-wrap:wrap;margin:8px 0}
+.seg button{border:1px solid #c9c4b3;background:#fff;border-radius:6px;padding:4px 10px;font-size:12.5px;cursor:pointer;font-weight:600;color:var(--mute)}
+.seg button[data-s=c].on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.seg button[data-s=p].on{background:var(--warn);color:#fff;border-color:var(--warn)}
+.seg button[data-s=n].on{background:var(--bad);color:#fff;border-color:var(--bad)}
+.seg button[data-s=m].on{background:var(--miss);color:#fff;border-color:var(--miss)}
+.seg button[data-s=x].on{background:var(--na);color:#fff;border-color:var(--na)}
+.numrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:6px 0;align-items:end}
+.extra{display:none;margin-top:6px;padding:8px 10px;border-radius:6px;font-size:13.5px}
+.item[data-st=n] .on-n,.item[data-st=p] .on-n{display:block;background:var(--bad-l)}
+.item[data-st=m] .on-m{display:block;background:var(--miss-l)}
+.det{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:700px){.det,.filters{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:#fff}
+.bar{height:10px;background:#e8e4d6;border-radius:5px;overflow:hidden;min-width:90px}
+.bar i{display:block;height:100%}
+.card{border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+.verdict{padding:14px;border-radius:10px;font-size:17px;font-weight:700;margin:10px 0}
+.tier-ok{background:var(--ok-l);color:var(--ok)}.tier-warn{background:var(--warn-l);color:var(--warn)}.tier-bad{background:var(--bad-l);color:var(--bad)}.tier-na{background:var(--na-l);color:var(--na)}
+.hide{display:none!important}
+body.conf .pii{filter:blur(5px)}body.conf .pii:focus,body.conf .pii:hover{filter:none}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:8px;z-index:99;display:none}
+footer{max-width:1180px;margin:0 auto;padding:10px 20px 30px;color:var(--mute);font-size:12.5px}
+/* report */
+#report{font-size:13px}
+#report .rhead{display:flex;gap:12px;align-items:center;border-bottom:4px solid var(--gold);padding-bottom:8px;margin-bottom:10px}
+#report .rhead .mark{border-color:var(--gold);color:var(--gold);background:var(--navy)}
+#report h3{margin:14px 0 4px;border-bottom:1px solid var(--line)}
+#report table{margin-bottom:8px}
+.st-c{color:var(--ok);font-weight:700}.st-p{color:var(--warn);font-weight:700}.st-n{color:var(--bad);font-weight:700}.st-m{color:var(--miss);font-weight:700}.st-x{color:var(--na)}
+@media print{
+ @page{margin:14mm}
+ body{background:#fff;font-size:11.5px}
+ header.brand,.scorebar,nav.tabs,footer,.panel:not(#tab-report),.noprint,.toast{display:none!important}
+ main{padding:0;max-width:none}
+ .panel#tab-report{display:block!important;border:0;padding:0}
+ th{background:#12304a!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ tr,.card{break-inside:avoid}
+ #report h3{break-after:avoid}
+}
+</style>
+</head>
+<body>
+<header class="brand">
+ <div class="brand-in">
+  <div class="mark" aria-hidden="true">C2C</div>
+  <div>
+   <h1>DeKalb County Zoning Compliance Checklist</h1>
+   <div class="sub">Creed-to-Commerce™ &nbsp;|&nbsp; The Balanced Middle Path Academy, LLC (BMPA)</div>
+  </div>
+  <div class="right">
+   <label class="row" style="color:#fff;margin:0;cursor:pointer"><input type="checkbox" id="confToggle" style="width:auto"> Confidential mode</label>
+   <button class="btn gold sm" id="btnManual" title="Open the User's Manual">User's Manual</button>
+  </div>
+ </div>
+</header>
+
+<div class="scorebar" aria-live="polite">
+ <div class="sb-in">
+  <div><div class="small">Composite compliance</div><div class="big" id="sbScore">—</div></div>
+  <div class="meter">
+   <div class="track"><div class="fill" id="sbFill" style="width:0"></div><div class="mark95" style="left:95%"></div></div>
+   <div class="small" id="sbSub" style="margin-top:3px"></div>
+  </div>
+  <div><span class="pill" id="sbVerdict">NOT YET ASSESSED</span></div>
+ </div>
+</div>
+
+<nav class="tabs" role="tablist">
+ <button data-tab="project" class="on">1 · Project</button>
+ <button data-tab="check">2 · Checklist</button>
+ <button data-tab="score">3 · Score &amp; Actions</button>
+ <button data-tab="appeals">4 · Appeals</button>
+ <button data-tab="missing">5 · Missing Data</button>
+ <button data-tab="save">6 · Save</button>
+ <button data-tab="report">7 · PDF Report</button>
+</nav>
+
+<main>
+<!-- PROJECT -->
+<section class="panel on" id="tab-project">
+ <h2>Project &amp; Property</h2>
+ <p class="small">Complete what you know. Anything left blank is treated as missing data, never as compliance.</p>
+ <div class="note"><b>Check the jurisdiction first.</b> Only unincorporated DeKalb County is governed by the DeKalb County Zoning Ordinance (Chapter 27 of the County Code). Cities such as Decatur, Dunwoody, Brookhaven, Chamblee, Doraville, Tucker, Stonecrest and others administer their own zoning.</div>
+ <div class="grid" id="metaGrid"></div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="panel" id="tab-check">
+ <h2>Compliance Checklist</h2>
+ <p class="small">Mark each item. Enter required and actual values on numeric items and the status is set for you. Weights: <span class="w w3">Critical ×3</span><span class="w w2">Major ×2</span><span class="w">Minor ×1</span></p>
+ <div class="filters">
+  <input type="search" id="fSearch" placeholder="Search items…" aria-label="Search items">
+  <select id="fCat" aria-label="Category filter"></select>
+  <select id="fStat" aria-label="Status filter">
+   <option value="">All statuses</option><option value="u">Not yet assessed</option><option value="c">Compliant</option><option value="p">Partial</option><option value="n">Non-compliant</option><option value="m">Missing data</option><option value="x">N/A</option>
+  </select>
+ </div>
+ <div class="row noprint" style="margin-bottom:6px">
+  <button class="btn alt sm" id="btnAddCustom">+ Add custom item</button>
+  <button class="btn alt sm" id="btnAllUnset">Reset all statuses</button>
+ </div>
+ <div id="list"></div>
+</section>
+
+<!-- SCORE -->
+<section class="panel" id="tab-score">
+ <h2>Score &amp; Recommended Actions</h2>
+ <div id="scoreOut"></div>
+</section>
+
+<!-- APPEALS -->
+<section class="panel" id="tab-appeals">
+ <h2>Appeals &amp; Relief for Non-Compliance</h2>
+ <div class="note">Items marked <b>Non-compliant</b> or <b>Partial</b> appear here. Choose a path (variance, appeal of an administrative decision, special land use permit, rezoning, or cure by redesign), record your grounds, and track status. <b>Filing deadlines and criteria are set by the County. Confirm them with DeKalb County Planning &amp; Sustainability before you rely on any date entered here.</b></div>
+ <label class="row" style="font-weight:600;color:var(--ink);cursor:pointer"><input type="checkbox" id="optGranted" style="width:auto"> Count items with a <i>Granted</i> appeal as compliant in the composite score</label>
+ <div id="appealsOut"></div>
+</section>
+
+<!-- MISSING -->
+<section class="panel" id="tab-missing">
+ <h2>Missing Data</h2>
+ <div id="missingOut"></div>
+</section>
+
+<!-- SAVE -->
+<section class="panel" id="tab-save">
+ <h2>Save, Load &amp; Privacy</h2>
+ <div class="grid">
+  <div class="card"><h3 style="margin-top:0">Saved assessments</h3>
+   <label for="saveName">Assessment name</label><input id="saveName" placeholder="e.g., 123 Main St – Garage addition">
+   <div class="row" style="margin-top:8px"><button class="btn" id="btnSave">Save</button></div>
+   <label for="loadSel" style="margin-top:10px">Load a saved assessment</label><select id="loadSel"></select>
+   <div class="row" style="margin-top:8px"><button class="btn alt" id="btnLoad">Load</button><button class="btn red" id="btnDelSaved">Delete</button></div>
+   <p class="small">Saved in this browser only. Clearing site data or using another device will not carry them over. Use the file export below as your backup.</p>
+  </div>
+  <div class="card"><h3 style="margin-top:0">Files</h3>
+   <div class="row"><button class="btn alt" id="btnExport">Export JSON backup</button>
+   <button class="btn alt" id="btnImport">Import JSON</button><input type="file" id="fileImport" accept=".json,application/json" class="hide"></div>
+   <div class="row" style="margin-top:8px"><button class="btn alt" id="btnCsv">Export results (CSV)</button></div>
+   <div class="row" style="margin-top:8px"><button class="btn" onclick="gotoTab('report')">Build PDF report →</button></div>
+  </div>
+  <div class="card"><h3 style="margin-top:0">Confidential self-check</h3>
+   <p class="small">Everything runs on your device. Nothing is sent to a server, and the page makes no network requests. Turn on <b>Confidential mode</b> (top right) to blur the address, parcel and names on screen. Redaction in the printed report is a separate option on the PDF tab.</p>
+   <button class="btn red" id="btnWipe">Erase all data on this device</button>
+  </div>
+ </div>
+</section>
+
+<!-- REPORT -->
+<section class="panel" id="tab-report">
+ <div class="noprint">
+  <h2>PDF Report</h2>
+  <div class="row" style="gap:16px;margin:8px 0">
+   <label class="row" style="margin:0;color:var(--ink);cursor:pointer"><input type="checkbox" id="rOnlyIssues" style="width:auto"> Deficiencies &amp; gaps only</label>
+   <label class="row" style="margin:0;color:var(--ink);cursor:pointer"><input type="checkbox" id="rRedact" style="width:auto"> Redact address, parcel &amp; names</label>
+   <label class="row" style="margin:0;color:var(--ink);cursor:pointer"><input type="checkbox" id="rAppeals" style="width:auto" checked> Include appeals</label>
+   <button class="btn gold" id="btnPrint">Generate PDF</button>
+  </div>
+  <p class="small">The Generate PDF button opens your browser's print dialog. Choose <b>Save as PDF</b> as the destination.</p>
+ </div>
+ <div id="report"></div>
+</section>
+</main>
+
+<footer>
+ <b>Creed-to-Commerce™</b> · The Balanced Middle Path Academy, LLC · This is an informational self-assessment tool. It is not legal advice, not a zoning determination, and not an official DeKalb County document. The Zoning Ordinance is amended often, so verify every requirement with DeKalb County Planning &amp; Sustainability and the current code on Municode before you act.
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ---------- DATA ---------- */
+const CATS=[
+ ["A","Property & Jurisdiction"],["B","Use Compliance"],["C","Dimensional Standards"],["D","Parking, Access & Loading"],
+ ["E","Landscape, Buffers & Trees"],["F","Environmental & Stormwater"],["G","Signs & Lighting"],["H","Building & Site Design"],["I","Permits & Process"],["Z","Custom Items"]
+];
+const DISTRICTS=["","R-100","R-85","R-75","R-60","RSM","MR-1","MR-2","HR-1","HR-2","HR-3","MU-1","MU-2","MU-3","MU-4","MU-5","NS","C-1","C-2","OI","OD","M","M-2","PD","Other / not sure"];
+const APPEAL_TYPES=["Variance (Zoning Board of Appeals)","Appeal of administrative decision (Zoning Board of Appeals)","Special Land Use Permit (Planning Commission / Board of Commissioners)","Rezoning / map amendment","Text amendment request","Administrative or minor modification (if available)","Cure by redesign (no appeal)","Other"];
+const APPEAL_STATUS=["Not started","Drafting","Filed","Hearing scheduled","Granted","Denied","Withdrawn"];
+function I(cat,id,text,w,fix,hint,num){return{cat,id,text,w,fix,hint,num:num||null}}
+const ITEMS=[
+I("A","a1","Parcel is in unincorporated DeKalb County, not inside a city with its own zoning code",3,"Confirm jurisdiction on the County GIS or tax map. If the parcel is inside a city, apply that city's code and use this checklist only as a guide.","Parcel ID and GIS jurisdiction layer."),
+I("A","a2","Zoning district verified against the official zoning map",3,"Obtain written zoning verification from Planning & Sustainability.","Official zoning map or zoning verification letter."),
+I("A","a3","Overlay district(s) identified and their added standards reviewed",2,"Identify every overlay on the parcel and add its standards to this checklist as custom items.","Overlay map layer and overlay text."),
+I("A","a4","Parcel is a legal lot of record",3,"Resolve through plat recordation, recombination, or a legal-lot determination before applying.","Recorded plat or deed with legal description."),
+I("A","a5","Prior zoning conditions, SLUP conditions and variances of record are identified and satisfied",3,"Pull case history for the parcel and demonstrate compliance with every condition, or request modification.","Zoning case history, conditions of approval."),
+I("A","a6","Deed restrictions, HOA covenants and easements do not conflict (private, not enforced by the County)",1,"Review covenants and recorded easements; obtain HOA approval if required.","Title report, covenants, easement plat."),
+I("B","b1","Proposed use is permitted by right in the zoning district",3,"If the use is not permitted, consider a different use, a rezoning, or a special land use permit.","Use table for the district."),
+I("B","b2","If the use requires a Special Land Use Permit (SLUP) or similar approval, it is obtained or in process",3,"File the SLUP application and complete required community and Planning Commission steps.","SLUP application and conditions."),
+I("B","b3","Use-specific supplemental standards are met (e.g., home occupation, child care, group home, short-term rental)",2,"Revise operations or plans to meet each supplemental standard.","Supplemental use regulations."),
+I("B","b4","Accessory uses and structures are allowed and incidental to the principal use",2,"Remove or redesign the accessory element, or seek relief.","Accessory-use standards."),
+I("B","b5","Existing nonconforming use or structure: status documented and expansion limits respected",2,"Document legal nonconforming status and restrict work to what the ordinance allows.","Evidence of lawful pre-existing use or structure."),
+I("C","c1","Lot area",3,"Lot area is a district standard. Consider a variance or lot recombination.","Survey or plat showing lot area.",{kind:"min",unit:"sq ft"}),
+I("C","c2","Lot width at the building line",2,"Seek a variance or reconfigure the lot.","Survey.",{kind:"min",unit:"ft"}),
+I("C","c3","Front yard setback",3,"Move the structure back, or request a variance.","Site plan or survey with dimensions.",{kind:"min",unit:"ft"}),
+I("C","c4","Side yard setback (interior)",3,"Shift or narrow the structure, or request a variance.","Site plan or survey.",{kind:"min",unit:"ft"}),
+I("C","c5","Side street (corner lot) setback",2,"Shift the structure, or request a variance.","Site plan or survey.",{kind:"min",unit:"ft"}),
+I("C","c6","Rear yard setback",3,"Reduce the footprint, relocate it, or request a variance.","Site plan or survey.",{kind:"min",unit:"ft"}),
+I("C","c7","Building height",3,"Lower the height or request a variance.","Elevations with height measured per the ordinance.",{kind:"max",unit:"ft"}),
+I("C","c8","Lot coverage / impervious surface",2,"Reduce paving or building area, or use approved pervious surfaces.","Site plan with impervious area calculation.",{kind:"max",unit:"%"}),
+I("C","c9","Minimum heated floor area per dwelling unit",2,"Enlarge the unit or seek relief.","Floor plans with area calculation.",{kind:"min",unit:"sq ft"}),
+I("C","c10","Residential density",2,"Reduce the unit count or seek a rezoning or relief.","Unit count and lot acreage.",{kind:"max",unit:"units/acre"}),
+I("C","c11","Floor area ratio or building coverage (where the district sets one)",1,"Reduce building area.","Site plan calculations.",{kind:"max",unit:"ratio / %"}),
+I("D","d1","Required off-street parking spaces provided",3,"Add spaces, reduce intensity, or request a parking reduction or variance.","Parking calculation per the ordinance for the use.",{kind:"min",unit:"spaces"}),
+I("D","d2","Driveway and curb cut approved (County; GDOT on state routes)",2,"Obtain driveway permit and sight-distance approval.","Driveway permit, GDOT permit if applicable."),
+I("D","d3","Parking location, surface and screening standards met",2,"Relocate, pave or screen parking as required.","Site plan."),
+I("D","d4","Accessible (ADA) parking provided",1,"Add the required accessible spaces and route.","Parking plan."),
+I("D","d5","Loading, bicycle and other special parking provided where required",1,"Add the required facilities.","Site plan."),
+I("D","d6","Driveway width",2,"Narrow the driveway or request a variance.","Site plan.",{kind:"max",unit:"ft"}),
+I("E","e1","Tree protection and canopy requirements met",2,"Revise the plan to preserve trees or provide replacement plantings; obtain arborist review.","Tree survey and tree protection plan."),
+I("E","e2","Transitional buffer next to residential districts",3,"Provide the full buffer width, or seek a variance or buffer reduction.","Site plan showing buffer location.",{kind:"min",unit:"ft"}),
+I("E","e3","Landscape strips and parking-lot landscaping",1,"Add required plantings.","Landscape plan."),
+I("E","e4","Dumpsters and mechanical equipment screened",1,"Add screening.","Site plan and details."),
+I("F","f1","Stream buffers (state and County) respected",3,"Move all disturbance and structures out of the buffer, or seek the allowed variance through the proper agency.","Survey showing streams and buffer lines.",{kind:"min",unit:"ft from stream"}),
+I("F","f2","Floodplain: no unpermitted development; flood elevation requirements met",3,"Relocate out of the floodplain or obtain a floodplain development permit.","FEMA/County floodplain map; elevation certificate."),
+I("F","f3","Stormwater management plan satisfied",2,"Provide required detention, water-quality or green infrastructure measures.","Stormwater plan and calculations."),
+I("F","f4","Wetlands and state-water permits obtained where applicable",2,"Obtain required Corps or state permits before disturbance.","Wetland delineation."),
+I("F","f5","Erosion and sediment control plan / land disturbance permit",2,"Obtain the land disturbance permit before any grading.","Approved LDP."),
+I("G","g1","Sign type, location and area within limits",1,"Reduce or relocate the sign.","Sign drawing and location.",{kind:"max",unit:"sq ft"}),
+I("G","g2","Sign permit obtained",1,"Apply for the sign permit.","Permit."),
+I("G","g3","Exterior lighting shielded; no spillover onto neighbors",1,"Use full-cutoff fixtures and adjust aiming.","Photometric plan."),
+I("H","h1","Fence or wall height",2,"Reduce the height or request a variance.","Fence elevation and plan.",{kind:"max",unit:"ft"}),
+I("H","h2","Accessory structures (sheds, garages, ADU/cottage) size, number and placement",2,"Resize or relocate, or seek relief.","Site plan and plans."),
+I("H","h3","District or overlay design standards met (materials, facade, orientation)",2,"Revise elevations to meet the design standards.","Elevations, material samples."),
+I("H","h4","Sidewalk, streetscape and frontage requirements met",1,"Add required improvements or request a waiver.","Site plan."),
+I("H","h5","Water/sewer availability or septic approval",2,"Obtain utility will-serve letters or Health Department septic approval.","Utility letters."),
+I("I","i1","Pre-application meeting held with Planning & Sustainability",2,"Schedule a pre-application meeting.","Meeting notes."),
+I("I","i2","Building permit / land disturbance permit issued before work begins",3,"Stop work and obtain permits.","Permit numbers."),
+I("I","i3","Certificate of Occupancy and business license obtained",2,"Apply once work is complete and the use is established.","CO and license."),
+I("I","i4","No open code enforcement violations on the parcel",3,"Resolve open cases with Code Enforcement.","Code enforcement search."),
+I("I","i5","Public notice and community steps scheduled (rezoning, SLUP, variance)",2,"Calendar the community meeting, notice and sign posting required for your application.","Application calendar."),
+I("I","i6","Application complete and fees paid",1,"Complete the missing application items.","Submittal checklist.")
+];
+const STAT={c:["Compliant",1],p:["Partial",.5],n:["Non-compliant",0],m:["Missing data",null],x:["N/A",null]};
+const META=[
+["name","Project name"],["address","Property address","pii"],["parcel","Parcel ID","pii"],["owner","Owner","pii"],["applicant","Applicant / preparer","pii"],
+["date","Assessment date","date"],["district","Zoning district","sel"],["overlay","Overlay district(s)"],["use","Proposed use / project type"],
+["jur","Jurisdiction","jur"],["notes","Project notes","ta"]
+];
+
+/* ---------- STATE ---------- */
+let S=fresh();
+function fresh(){return{meta:{date:new Date().toISOString().slice(0,10),jur:"Unincorporated DeKalb County"},items:{},appeals:{},custom:[],opt:{granted:true}}}
+const WK="bmpa_zcl_work_v1",SK="bmpa_zcl_saved_v1";
+let mem={};
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}
+function allItems(){return ITEMS.concat(S.custom.map(c=>({cat:"Z",id:c.id,text:c.text,w:c.w,fix:c.fix||"Define and complete the corrective action.",hint:c.hint||"Gather supporting documentation.",num:c.num||null,custom:true})))}
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",2400)}
+let saveT;function persist(){clearTimeout(saveT);saveT=setTimeout(()=>lsSet(WK,JSON.stringify(S)),250)}
+
+/* ---------- SCORING ---------- */
+function st(id){return (S.items[id]&&S.items[id].s)||""}
+function credit(it){
+ const s=st(it.id);
+ if(s==="x")return{k:"x"};
+ if(s==="c")return{k:"a",c:1};
+ if(s==="p")return{k:"a",c:.5};
+ if(s==="n"){const ap=S.appeals[it.id];return(S.opt.granted&&ap&&ap.status==="Granted")?{k:"a",c:1,granted:true}:{k:"a",c:0}}
+ return{k:"pend",miss:s==="m"};
+}
+function calc(){
+ const r={earnedW:0,assessW:0,pendW:0,counts:{c:0,p:0,n:0,m:0,x:0,u:0},crit:[],cats:{},n:0,appl:0};
+ allItems().forEach(it=>{
+  const cr=credit(it);r.n++;
+  const cat=r.cats[it.cat]||(r.cats[it.cat]={e:0,a:0,p:0});
+  const s=st(it.id)||"u";r.counts[s]++;
+  if(cr.k==="a"){r.earnedW+=it.w*cr.c;r.assessW+=it.w;cat.e+=it.w*cr.c;cat.a+=it.w;if(it.w===3&&cr.c===0)r.crit.push(it)}
+  else if(cr.k==="pend"){r.pendW+=it.w;cat.p+=it.w}
+ });
+ r.appl=r.n-r.counts.x;
+ r.score=r.assessW?r.earnedW/r.assessW*100:null;
+ r.worst=(r.assessW+r.pendW)?r.earnedW/(r.assessW+r.pendW)*100:null;
+ r.complete=r.appl?(r.counts.c+r.counts.p+r.counts.n)/r.appl*100:0;
+ return r;
+}
+function verdict(r){
+ const prov=r.pendW>0?"PROVISIONAL · ":"";
+ if(r.score===null)return{t:"NOT YET ASSESSED",c:"tier-na",col:"var(--na)"};
+ if(r.crit.length)return{t:prov+"CRITICAL DEFICIENCY",c:"tier-bad",col:"var(--bad)"};
+ if(r.score>=95)return{t:prov+"COMPLIANT (95–100%)",c:"tier-ok",col:"var(--ok)"};
+ if(r.score>=85)return{t:prov+"NEAR COMPLIANCE",c:"tier-warn",col:"var(--warn)"};
+ if(r.score>=70)return{t:prov+"CONDITIONAL",c:"tier-warn",col:"var(--warn)"};
+ return{t:prov+"NON-COMPLIANT",c:"tier-bad",col:"var(--bad)"};
+}
+function tierActions(r){
+ if(r.score===null)return["Begin the checklist. Start with jurisdiction, district and use (Categories A and B)."];
+ const a=[];
+ if(r.crit.length)a.push("Resolve every Critical item marked Non-compliant before filing anything. A Critical failure blocks a 'Compliant' rating regardless of the percentage.");
+ if(r.score>=95)a.push("Compliance band reached. Assemble the supporting documents for each Compliant item and request written zoning verification if one is not on file.","Correct any remaining minor items now to keep the record clean.");
+ else if(r.score>=85)a.push("Near compliance. Cure the listed items through minor redesign or administrative correction.","Hold a pre-application meeting with Planning & Sustainability to confirm which gaps can be fixed without a hearing.");
+ else if(r.score>=70)a.push("Conditional. Cure each Major item by redesign where you can, and prepare variance or other relief for items that cannot be cured.","Do not begin construction or change of use until the Major items are resolved.");
+ else a.push("Non-compliant. Do not submit for permits in the current form.","Re-evaluate the use and design. If the use or district is the problem, consider a Special Land Use Permit or rezoning, with professional help.");
+ if(r.pendW>0)a.push("Resolve Missing / unassessed items. The score is provisional until they are answered. Worst case with all pending items failing: "+r.worst.toFixed(1)+"%.");
+ return a;
+}
+function toTarget(r){
+ if(r.score===null||r.score>=95)return null;
+ const defs=allItems().filter(it=>{const c=credit(it);return c.k==="a"&&c.c<1}).sort((a,b)=>(b.w*(1-credit(b).c))-(a.w*(1-credit(a).c))||b.w-a.w);
+ let e=r.earnedW,list=[];
+ for(const it of defs){list.push(it);e+=it.w*(1-credit(it).c);if(e/r.assessW>=.95)return{list,reach:true,after:e/r.assessW*100}}
+ return{list,reach:false,after:e/r.assessW*100};
+}
+
+/* ---------- RENDER: META ---------- */
+function buildMeta(){
+ $("#metaGrid").innerHTML=META.map(([k,l,t])=>{
+  const v=esc(S.meta[k]||"");const pii=t==="pii"?" pii":"";
+  if(t==="sel")return`<div><label for="m_${k}">${l}</label><select id="m_${k}" data-m="${k}">${DISTRICTS.map(d=>`<option ${d===S.meta[k]?"selected":""}>${d}</option>`).join("")}</select></div>`;
+  if(t==="jur")return`<div><label for="m_${k}">${l}</label><select id="m_${k}" data-m="${k}">${["Unincorporated DeKalb County","Inside a city (use that city's code)","Not sure"].map(d=>`<option ${d===S.meta[k]?"selected":""}>${d}</option>`).join("")}</select></div>`;
+  if(t==="ta")return`<div style="grid-column:1/-1"><label for="m_${k}">${l}</label><textarea id="m_${k}" data-m="${k}">${v}</textarea></div>`;
+  return`<div><label for="m_${k}">${l}</label><input id="m_${k}" data-m="${k}" class="${pii}" type="${t==="date"?"date":"text"}" value="${v}"></div>`;
+ }).join("");
+}
+
+/* ---------- RENDER: CHECKLIST ---------- */
+function itemHTML(it){
+ const s=st(it.id),d=S.items[it.id]||{};
+ const wl=it.w===3?"Critical ×3":it.w===2?"Major ×2":"Minor ×1";
+ const num=it.num?`<div class="numrow">
+  <div><label>Required (${it.num.kind==="min"?"minimum":"maximum"}, ${esc(it.num.unit)})</label><input type="number" step="any" data-f="req" value="${d.req!=null?esc(d.req):""}"></div>
+  <div><label>Actual / proposed (${esc(it.num.unit)})</label><input type="number" step="any" data-f="act" value="${d.act!=null?esc(d.act):""}"></div>
+  <div class="small" data-calc></div></div>`:"";
+ return`<div class="item" data-id="${it.id}" data-cat="${it.cat}" data-st="${s||"u"}">
+  <div class="it-top"><div class="it-text">${esc(it.text)}<span class="w w${it.w}">${wl}</span>${it.custom?` <button class="btn red sm noprint" data-del-custom="${it.id}">remove</button>`:""}</div></div>
+  ${num}
+  <div class="seg" role="group" aria-label="Status">${Object.keys(STAT).map(k=>`<button type="button" data-s="${k}" class="${s===k?"on":""}">${STAT[k][0]}</button>`).join("")}</div>
+  <div class="extra on-n"><b>Corrective path:</b> ${esc(it.fix)} <button class="btn gold sm noprint" data-appeal="${it.id}">Open appeal / relief</button></div>
+  <div class="extra on-m"><b>Gather:</b> ${esc(it.hint)}</div>
+  <div class="det"><div><label>Code reference (section)</label><input data-f="ref" value="${esc(d.ref||"")}" placeholder="e.g., Chapter 27, section…"></div>
+  <div><label>Notes / evidence</label><input data-f="note" value="${esc(d.note||"")}" placeholder="Document, plan sheet, or contact"></div></div>
+ </div>`;
+}
+function buildList(){
+ const items=allItems();const sel=$("#fCat");
+ sel.innerHTML='<option value="">All categories</option>'+CATS.filter(c=>c[0]!=="Z"||S.custom.length).map(c=>`<option value="${c[0]}">${c[0]} · ${c[1]}</option>`).join("");
+ $("#list").innerHTML=CATS.map(([k,n])=>{
+  const its=items.filter(i=>i.cat===k);if(!its.length)return"";
+  return`<div class="cat" data-catwrap="${k}"><b>${k} · ${n}</b><span class="small" data-catscore="${k}"></span></div>`+its.map(itemHTML).join("");
+ }).join("");
+ $$(".item").forEach(el=>calcRow(el.dataset.id));
+ applyFilters();
+}
+function calcRow(id){
+ const it=allItems().find(i=>i.id===id);if(!it||!it.num)return;
+ const d=S.items[id]||{},el=$(`.item[data-id="${id}"] [data-calc]`);if(!el)return;
+ const ok=d.req!==""&&d.req!=null&&d.act!==""&&d.act!=null&&!isNaN(+d.req)&&!isNaN(+d.act);
+ if(!ok){el.textContent="Enter both values to auto-evaluate.";return}
+ const diff=+d.act-+d.req;const pass=it.num.kind==="min"?diff>=0:diff<=0;
+ el.innerHTML=(pass?"<b style='color:var(--ok)'>Meets standard</b>":"<b style='color:var(--bad)'>Fails by "+Math.abs(diff).toLocaleString(undefined,{maximumFractionDigits:2})+" "+esc(it.num.unit)+"</b>");
+}
+function setStatus(id,s,silent){
+ const d=S.items[id]||(S.items[id]={});
+ d.s=(d.s===s&&!silent)?"":s;
+ const row=$(`.item[data-id="${id}"]`);
+ if(row){row.dataset.st=d.s||"u";row.querySelectorAll(".seg button").forEach(b=>b.classList.toggle("on",b.dataset.s===d.s))}
+}
+function applyFilters(){
+ const q=$("#fSearch").value.toLowerCase(),c=$("#fCat").value,s=$("#fStat").value;
+ const items=allItems();
+ $$(".item").forEach(el=>{
+  const it=items.find(i=>i.id===el.dataset.id);
+  const okq=!q||it.text.toLowerCase().includes(q)||(S.items[it.id]&&(S.items[it.id].note||"").toLowerCase().includes(q));
+  const okc=!c||it.cat===c;const okS=!s||el.dataset.st===s;
+  el.classList.toggle("hide",!(okq&&okc&&okS));
+ });
+ $$(".cat").forEach(h=>{
+  const k=h.dataset.catwrap;const any=$$(`.item[data-cat="${k}"]`).some(e=>!e.classList.contains("hide"));h.classList.toggle("hide",!any);
+ });
+}
+
+/* ---------- RENDER: SCORE ---------- */
+function barHTML(p,col){return`<div class="bar"><i style="width:${p||0}%;background:${col}"></i></div>`}
+function colFor(p){return p>=95?"var(--ok)":p>=70?"var(--warn)":"var(--bad)"}
+function renderTop(){
+ const r=calc(),v=verdict(r);
+ $("#sbScore").textContent=r.score===null?"—":r.score.toFixed(1)+"%";
+ $("#sbFill").style.width=(r.score||0)+"%";$("#sbFill").style.background=v.col;
+ const p=$("#sbVerdict");p.textContent=v.t;p.style.background=v.col;p.style.color="#fff";
+ $("#sbSub").textContent=`${r.appl} applicable · ${r.counts.c} compliant · ${r.counts.p} partial · ${r.counts.n} non-compliant · ${r.counts.m+r.counts.u} unresolved · data ${r.complete.toFixed(0)}% complete`;
+ $$("[data-catscore]").forEach(e=>{const c=r.cats[e.dataset.catscore];e.textContent=c&&c.a?(c.e/c.a*100).toFixed(0)+"% of assessed":""});
+ return r;
+}
+function renderScore(){
+ const r=calc(),v=verdict(r),t=toTarget(r);
+ const rows=CATS.filter(c=>r.cats[c[0]]).map(([k,n])=>{const c=r.cats[k];const p=c.a?c.e/c.a*100:null;
+  return`<tr><td>${k} · ${n}</td><td>${p===null?"—":p.toFixed(1)+"%"}</td><td>${p===null?"":barHTML(p,colFor(p))}</td><td>${c.p?c.p+" wt pending":""}</td></tr>`}).join("");
+ const defs=allItems().filter(it=>{const c=credit(it);return(c.k==="a"&&c.c<1)}).sort((a,b)=>b.w-a.w);
+ const pend=allItems().filter(it=>credit(it).k==="pend").sort((a,b)=>b.w-a.w);
+ $("#scoreOut").innerHTML=`
+ <div class="verdict ${v.c}">${v.t} · ${r.score===null?"—":r.score.toFixed(1)+"%"}</div>
+ <div class="grid">
+  <div class="card"><b>Confirmed score</b><div class="big">${r.score===null?"—":r.score.toFixed(1)+"%"}</div><div class="small">Weighted credit over items you have assessed.</div></div>
+  <div class="card"><b>Worst-case score</b><div class="big">${r.worst===null?"—":r.worst.toFixed(1)+"%"}</div><div class="small">If every Missing / unassessed item turns out Non-compliant.</div></div>
+  <div class="card"><b>Data completeness</b><div class="big">${r.complete.toFixed(0)}%</div><div class="small">Applicable items with a compliance answer.</div></div>
+ </div>
+ <p class="small">How it works: Compliant = full credit, Partial = half credit, Non-compliant = none. Critical items count ×3, Major ×2, Minor ×1. N/A items leave the calculation. Missing and unassessed items are not guessed. They lower data completeness and the worst-case score instead. The 95% band also requires zero Critical failures.</p>
+ <h3>Category scores</h3>
+ <table><thead><tr><th>Category</th><th>Score</th><th></th><th>Pending</th></tr></thead><tbody>${rows||"<tr><td colspan=4>No data yet.</td></tr>"}</tbody></table>
+ <h3>Action level for your score</h3>
+ <ul>${tierActions(r).map(a=>`<li>${esc(a)}</li>`).join("")}</ul>
+ ${t?`<h3>Fastest path to 95%</h3><p class="small">${t.reach?"Curing these items in order lifts the confirmed score to about "+t.after.toFixed(1)+"%.":"Even curing every deficiency below leaves you at about "+t.after.toFixed(1)+"%. Resolve Missing items too."}</p>
+ <ol>${t.list.map(it=>`<li><b>${esc(it.text)}</b> <span class="w w${it.w}">${it.w===3?"Critical":it.w===2?"Major":"Minor"}</span><br><span class="small">${esc(it.fix)}</span></li>`).join("")}</ol>`:""}
+ <h3>Deficiency action list (${defs.length})</h3>
+ ${defs.length?`<table><thead><tr><th>Item</th><th>Weight</th><th>Status</th><th>Corrective path</th></tr></thead><tbody>${defs.map(it=>`<tr><td>${esc(it.text)}</td><td>${it.w}</td><td>${STAT[st(it.id)][0]}</td><td>${esc(it.fix)}</td></tr>`).join("")}</tbody></table>`:"<p>None recorded.</p>"}
+ <h3>Unresolved items (${pend.length})</h3><p class="small">See the Missing Data tab for the full request list.</p>`;
+}
+
+/* ---------- APPEALS ---------- */
+function appealTpl(it,ap){
+ const d=S.items[it.id]||{};const m=S.meta;
+ const num=it.num&&d.req!=null&&d.req!==""&&d.act!=null&&d.act!==""?` The standard is ${d.req} ${it.num.unit} (${it.num.kind==="min"?"minimum":"maximum"}); the proposal is ${d.act} ${it.num.unit}.`:"";
+ const t=ap.type||"";
+ if(/^Variance/.test(t))return`Request: a variance from the requirement concerning "${it.text}" for ${m.address||"[property address]"} (parcel ${m.parcel||"[parcel ID]"}), zoned ${m.district||"[district]"}.${num}\n\nGrounds (confirm against the criteria in the current ordinance):\n1. Extraordinary or exceptional conditions of the property: [lot size, shape, topography, existing structures].\n2. Strict application would create an unnecessary hardship for a reason not of the applicant's making: [explain].\n3. Relief can be granted without substantial detriment to the public good or neighbors, and without impairing the purpose and intent of the ordinance: [explain].\n4. The minimum variance needed is requested: [explain].`;
+ if(/^Appeal of admin/.test(t))return`Request: review of the administrative decision dated [date] by [official] concerning "${it.text}" for ${m.address||"[property address]"}.${num}\n\nGrounds: The decision misinterprets or misapplies [section]. Facts: [facts]. Requested outcome: [reverse / modify].`;
+ if(/^Special Land/.test(t))return`Request: Special Land Use Permit for ${m.use||"[use]"} at ${m.address||"[property address]"}, zoned ${m.district||"[district]"}.\n\nGrounds: compatibility with surrounding uses; adequacy of access, parking and utilities; mitigation of impacts through [buffers, hours, conditions]; consistency with the comprehensive plan.`;
+ if(/^Rezoning|^Text/.test(t))return`Request: ${t.toLowerCase()} for ${m.address||"[property address]"}. Present zoning: ${m.district||"[district]"}. Requested: [district or text change].\n\nGrounds: consistency with the comprehensive plan and character area; changed conditions; suitability of the property for the proposed district; effect on public facilities.`;
+ if(/^Cure/.test(t))return`Cure plan for "${it.text}": ${it.fix}\nResponsible party: [name]. Target date: [date].`;
+ return`Describe the relief requested for "${it.text}" and the grounds.`;
+}
+function renderAppeals(){
+ const its=allItems().filter(it=>st(it.id)==="n"||st(it.id)==="p"||S.appeals[it.id]);
+ if(!its.length){$("#appealsOut").innerHTML='<p>No non-compliant or partial items yet. Items you mark Non-compliant or Partial will appear here.</p>';return}
+ const rows=its.map(it=>{const ap=S.appeals[it.id]||{};
+ return`<div class="card" data-ap="${it.id}">
+ <div class="row" style="justify-content:space-between"><b>${esc(it.text)}</b><span class="pill" style="background:${st(it.id)==="n"?"var(--bad)":"var(--warn)"};color:#fff">${STAT[st(it.id)]?STAT[st(it.id)][0]:"—"}</span></div>
+ <div class="grid" style="margin-top:8px">
+  <div><label>Path</label><select data-a="type"><option value="">Select…</option>${APPEAL_TYPES.map(t=>`<option ${ap.type===t?"selected":""}>${t}</option>`).join("")}</select></div>
+  <div><label>Status</label><select data-a="status">${APPEAL_STATUS.map(t=>`<option ${(ap.status||"Not started")===t?"selected":""}>${t}</option>`).join("")}</select></div>
+  <div><label>Case / application no.</label><input data-a="case" value="${esc(ap.case||"")}"></div>
+  <div><label>Filed on</label><input type="date" data-a="filed" value="${esc(ap.filed||"")}"></div>
+  <div><label>Filing deadline (confirm with County)</label><input type="date" data-a="deadline" value="${esc(ap.deadline||"")}"></div>
+  <div><label>Hearing date</label><input type="date" data-a="hearing" value="${esc(ap.hearing||"")}"></div>
+ </div>
+ <label style="margin-top:8px">Grounds / statement of hardship</label>
+ <textarea data-a="grounds" style="min-height:130px">${esc(ap.grounds||"")}</textarea>
+ <label style="margin-top:8px">Supporting exhibits &amp; notes</label>
+ <textarea data-a="notes">${esc(ap.notes||"")}</textarea>
+ <div class="row noprint" style="margin-top:8px"><button class="btn alt sm" data-draft="${it.id}">Draft statement from template</button><button class="btn alt sm" data-copy="${it.id}">Copy statement</button><button class="btn red sm" data-rmap="${it.id}">Remove appeal</button></div>
+ </div>`}).join("");
+ $("#appealsOut").innerHTML=rows;
+}
+function dlWarn(ap){
+ if(!ap.deadline||["Filed","Hearing scheduled","Granted","Denied","Withdrawn"].includes(ap.status))return"";
+ const days=Math.ceil((new Date(ap.deadline)-new Date(new Date().toISOString().slice(0,10)))/864e5);
+ return days<0?" (deadline passed)":days<=14?` (${days} days left)`:"";
+}
+
+/* ---------- MISSING ---------- */
+function renderMissing(){
+ const its=allItems().filter(it=>credit(it).k==="pend").sort((a,b)=>b.w-a.w);
+ const r=calc();
+ $("#missingOut").innerHTML=`<p><b>${its.length}</b> items need an answer. Data completeness: <b>${r.complete.toFixed(0)}%</b>. Missing items are never counted as compliant.</p>
+ <div class="row noprint" style="margin-bottom:8px"><button class="btn alt sm" id="btnMissCsv">Download request list (CSV)</button><button class="btn alt sm" id="btnMissCopy">Copy as text</button></div>
+ ${its.length?`<table><thead><tr><th>Item</th><th>Weight</th><th>Marked</th><th>Information to gather</th><th></th></tr></thead><tbody>${its.map(it=>`<tr><td>${esc(it.text)}</td><td>${it.w}</td><td>${st(it.id)==="m"?"Missing data":"Not yet assessed"}</td><td>${esc(it.hint)}</td><td><button class="btn alt sm" data-goto="${it.id}">Go to item</button></td></tr>`).join("")}</tbody></table>`:"<p>All applicable items are answered.</p>"}`;
+}
+function missingText(){return allItems().filter(it=>credit(it).k==="pend").map(it=>`- ${it.text} [${it.w===3?"Critical":it.w===2?"Major":"Minor"}] — gather: ${it.hint}`).join("\n")}
+
+/* ---------- SAVE ---------- */
+function saved(){try{return JSON.parse(lsGet(SK)||"{}")}catch(e){return{}}}
+function refreshSaved(){const s=saved();$("#loadSel").innerHTML=Object.keys(s).length?Object.keys(s).map(k=>`<option>${esc(k)}</option>`).join(""):"<option value=''>(none saved)</option>"}
+function download(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:type||"text/plain"}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+function csvCell(v){return'"'+String(v==null?"":v).replace(/"/g,'""')+'"'}
+function resultsCsv(){
+ const rows=[["Category","Item","Weight","Status","Required","Actual","Unit","Code ref","Notes","Appeal path","Appeal status"]];
+ allItems().forEach(it=>{const d=S.items[it.id]||{},ap=S.appeals[it.id]||{};rows.push([it.cat,it.text,it.w,d.s?STAT[d.s][0]:"Not yet assessed",d.req,d.act,it.num?it.num.unit:"",d.ref,d.note,ap.type,ap.status])});
+ return rows.map(r=>r.map(csvCell).join(",")).join("\r\n");
+}
+
+/* ---------- REPORT ---------- */
+function buildReport(){
+ const redact=$("#rRedact").checked,only=$("#rOnlyIssues").checked,incAp=$("#rAppeals").checked;
+ const R=(v,pii)=>pii&&redact?"[REDACTED]":(esc(v)||"—");
+ const r=calc(),v=verdict(r),m=S.meta,t=toTarget(r);
+ const items=allItems().filter(it=>!only||!(["c","x"].includes(st(it.id))));
+ const catRows=CATS.filter(c=>r.cats[c[0]]).map(([k,n])=>{const c=r.cats[k];const p=c.a?c.e/c.a*100:null;return`<tr><td>${k} · ${n}</td><td>${p===null?"—":p.toFixed(1)+"%"}</td><td>${c.p?"pending items":""}</td></tr>`}).join("");
+ const itemRows=CATS.map(([k,n])=>{
+  const its=items.filter(i=>i.cat===k);if(!its.length)return"";
+  return`<tr><td colspan="5" style="background:#f3e7bd"><b>${k} · ${n}</b></td></tr>`+its.map(it=>{const d=S.items[it.id]||{},s=st(it.id);
+   const val=it.num&&d.req!=null&&d.req!==""?`Req ${esc(d.req)} / Act ${d.act!=null&&d.act!==""?esc(d.act):"?"} ${esc(it.num.unit)}`:"";
+   return`<tr><td>${esc(it.text)}</td><td>${it.w===3?"Critical":it.w===2?"Major":"Minor"}</td><td class="st-${s||"m"}">${s?STAT[s][0]:"Not assessed"}</td><td>${val}</td><td>${esc([d.ref,d.note].filter(Boolean).join(" · "))}</td></tr>`}).join("")}).join("");
+ const defs=allItems().filter(it=>{const c=credit(it);return c.k==="a"&&c.c<1});
+ const pend=allItems().filter(it=>credit(it).k==="pend");
+ const aps=allItems().filter(it=>S.appeals[it.id]);
+ $("#report").innerHTML=`
+ <div class="rhead"><div class="mark">C2C</div><div><div style="font:700 20px Georgia,serif;color:#12304a">DeKalb County Zoning Compliance Report</div>
+ <div class="small">Creed-to-Commerce™ · The Balanced Middle Path Academy, LLC (BMPA)</div></div><div style="margin-left:auto;text-align:right" class="small">Generated ${new Date().toLocaleString()}<br>${redact?"Confidential – redacted":"Confidential"}</div></div>
+ <table><tbody>
+  <tr><th style="width:22%">Project</th><td>${R(m.name)}</td><th style="width:18%">Date</th><td>${R(m.date)}</td></tr>
+  <tr><th>Address</th><td>${R(m.address,1)}</td><th>Parcel ID</th><td>${R(m.parcel,1)}</td></tr>
+  <tr><th>Zoning district</th><td>${R(m.district)}</td><th>Overlay</th><td>${R(m.overlay)}</td></tr>
+  <tr><th>Use / project</th><td>${R(m.use)}</td><th>Jurisdiction</th><td>${R(m.jur)}</td></tr>
+  <tr><th>Owner</th><td>${R(m.owner,1)}</td><th>Preparer</th><td>${R(m.applicant,1)}</td></tr>
+ </tbody></table>
+ <h3>Composite result</h3>
+ <div class="verdict ${v.c}" style="font-size:15px">${v.t} · ${r.score===null?"—":r.score.toFixed(1)+"%"}</div>
+ <table><tbody><tr><th>Confirmed score</th><td>${r.score===null?"—":r.score.toFixed(1)+"%"}</td><th>Worst-case score</th><td>${r.worst===null?"—":r.worst.toFixed(1)+"%"}</td><th>Data completeness</th><td>${r.complete.toFixed(0)}%</td></tr>
+ <tr><th>Compliant</th><td>${r.counts.c}</td><th>Partial</th><td>${r.counts.p}</td><th>Non-compliant</th><td>${r.counts.n}</td></tr>
+ <tr><th>Missing</th><td>${r.counts.m}</td><th>Not assessed</th><td>${r.counts.u}</td><th>N/A</th><td>${r.counts.x}</td></tr></tbody></table>
+ <p class="small">Scoring: Compliant 100%, Partial 50%, Non-compliant 0%; weights Critical ×3, Major ×2, Minor ×1; N/A excluded; Missing data is never counted as compliant. A rating of Compliant (95–100%) requires no Critical failures.</p>
+ <h3>Category scores</h3><table><thead><tr><th>Category</th><th>Score</th><th>Note</th></tr></thead><tbody>${catRows||"<tr><td colspan=3>No data.</td></tr>"}</tbody></table>
+ <h3>Recommended actions</h3><ul>${tierActions(r).map(a=>`<li>${esc(a)}</li>`).join("")}</ul>
+ ${t?`<p><b>Fastest path to 95%:</b> ${t.list.slice(0,8).map(i=>esc(i.text)).join("; ")}${t.list.length>8?"; …":""}.</p>`:""}
+ <h3>Item results</h3><table><thead><tr><th>Item</th><th>Weight</th><th>Status</th><th>Values</th><th>Reference / notes</th></tr></thead><tbody>${itemRows||"<tr><td colspan=5>None.</td></tr>"}</tbody></table>
+ <h3>Deficiencies and corrective paths</h3>
+ ${defs.length?`<table><thead><tr><th>Item</th><th>Corrective path</th></tr></thead><tbody>${defs.map(it=>`<tr><td>${esc(it.text)}</td><td>${esc(it.fix)}</td></tr>`).join("")}</tbody></table>`:"<p>No deficiencies recorded.</p>"}
+ ${incAp?`<h3>Appeals &amp; relief register</h3>${aps.length?`<table><thead><tr><th>Item</th><th>Path</th><th>Status</th><th>Dates</th><th>Grounds</th></tr></thead><tbody>${aps.map(it=>{const a=S.appeals[it.id];return`<tr><td>${esc(it.text)}</td><td>${esc(a.type||"—")}</td><td>${esc(a.status||"Not started")}${a.case?"<br>No. "+esc(a.case):""}</td><td>Deadline ${esc(a.deadline||"—")}<br>Filed ${esc(a.filed||"—")}<br>Hearing ${esc(a.hearing||"—")}</td><td style="white-space:pre-wrap">${esc(a.grounds||"—")}</td></tr>`}).join("")}</tbody></table>`:"<p>No appeals recorded.</p>"}`:""}
+ <h3>Missing data request list</h3>
+ ${pend.length?`<table><thead><tr><th>Item</th><th>Weight</th><th>Information to gather</th></tr></thead><tbody>${pend.map(it=>`<tr><td>${esc(it.text)}</td><td>${it.w}</td><td>${esc(it.hint)}</td></tr>`).join("")}</tbody></table>`:"<p>None. All applicable items are answered.</p>"}
+ ${m.notes&&!redact?`<h3>Project notes</h3><p style="white-space:pre-wrap">${esc(m.notes)}</p>`:""}
+ <h3>Disclaimer</h3><p class="small">This report is a self-assessment prepared with an informational tool. It is not legal advice, not a zoning determination, and not an official DeKalb County document. The County Zoning Ordinance (Chapter 27) and related codes are amended often. Confirm every requirement, filing deadline and fee with DeKalb County Planning &amp; Sustainability before you rely on this report.</p>
+ <p class="small" style="margin-top:22px">Prepared by: ______________________ &nbsp; Date: ____________ &nbsp; &nbsp; Reviewed by: ______________________</p>
+ <p class="small" style="text-align:center;margin-top:14px"><b>Creed-to-Commerce™</b> · The Balanced Middle Path Academy, LLC</p>`;
+}
+
+/* ---------- EVENTS ---------- */
+function gotoTab(t){
+ $$("nav.tabs button").forEach(b=>b.classList.toggle("on",b.dataset.tab===t));
+ $$(".panel").forEach(p=>p.classList.toggle("on",p.id==="tab-"+t));
+ if(t==="score")renderScore();if(t==="appeals")renderAppeals();if(t==="missing")renderMissing();if(t==="save")refreshSaved();if(t==="report")buildReport();
+ window.scrollTo({top:0});
+}
+function refreshAll(){buildMeta();buildList();$("#optGranted").checked=!!S.opt.granted;renderTop()}
+
+document.addEventListener("click",e=>{
+ const t=e.target.closest("button");if(!t)return;
+ if(t.dataset.tab)return gotoTab(t.dataset.tab);
+ if(t.dataset.s){const id=t.closest(".item").dataset.id;setStatus(id,t.dataset.s);renderTop();persist();return}
+ if(t.dataset.appeal){const id=t.dataset.appeal;S.appeals[id]=S.appeals[id]||{status:"Not started"};persist();gotoTab("appeals");setTimeout(()=>{const c=$(`[data-ap="${id}"]`);c&&c.scrollIntoView({behavior:"smooth",block:"center"})},50);return}
+ if(t.dataset.draft){const id=t.dataset.draft,it=allItems().find(i=>i.id===id),ap=S.appeals[id]=S.appeals[id]||{};if(!ap.type){toast("Choose a path first");return}
+  if(ap.grounds&&!confirm("Replace the current statement with the template?"))return;ap.grounds=appealTpl(it,ap);persist();renderAppeals();return}
+ if(t.dataset.copy){const ap=S.appeals[t.dataset.copy];navigator.clipboard&&navigator.clipboard.writeText((ap&&ap.grounds)||"").then(()=>toast("Copied"),()=>toast("Copy blocked by browser"));return}
+ if(t.dataset.rmap){if(confirm("Remove this appeal record?")){delete S.appeals[t.dataset.rmap];persist();renderAppeals();renderTop()}return}
+ if(t.dataset.goto){gotoTab("check");$("#fSearch").value="";$("#fCat").value="";$("#fStat").value="";applyFilters();const el=$(`.item[data-id="${t.dataset.goto}"]`);el&&el.scrollIntoView({behavior:"smooth",block:"center"});return}
+ if(t.dataset.delCustom){S.custom=S.custom.filter(c=>c.id!==t.dataset.delCustom);delete S.items[t.dataset.delCustom];persist();buildList();renderTop();return}
+ switch(t.id){
+  case"btnManual":window.open("DeKalb_Zoning_Checklist_Users_Manual.html","_blank");break;
+  case"btnAddCustom":{const tx=prompt("Describe the requirement (e.g., an overlay-district standard):");if(!tx)break;
+   const w=+prompt("Weight: 3 = Critical, 2 = Major, 1 = Minor","2");const kind=prompt("Numeric limit? Type min, max, or leave blank for none:","");
+   const o={id:"z"+Date.now(),text:tx,w:[1,2,3].includes(w)?w:2};
+   if(kind==="min"||kind==="max"){o.num={kind,unit:prompt("Unit (ft, sq ft, %, spaces…)","ft")||""}}
+   S.custom.push(o);persist();buildList();renderTop();break}
+  case"btnAllUnset":if(confirm("Reset every status to 'not yet assessed'? Values and notes stay.")){Object.values(S.items).forEach(d=>d.s="");buildList();renderTop();persist()}break;
+  case"btnSave":{const n=$("#saveName").value.trim()||S.meta.name||"Untitled "+new Date().toLocaleString();const s=saved();s[n]=S;lsSet(SK,JSON.stringify(s));$("#saveName").value=n;refreshSaved();toast("Saved: "+n);break}
+  case"btnLoad":{const n=$("#loadSel").value;const s=saved();if(s[n]){S=Object.assign(fresh(),JSON.parse(JSON.stringify(s[n])));persist();refreshAll();$("#saveName").value=n;toast("Loaded")}break}
+  case"btnDelSaved":{const n=$("#loadSel").value;const s=saved();if(s[n]&&confirm("Delete saved assessment '"+n+"'?")){delete s[n];lsSet(SK,JSON.stringify(s));refreshSaved()}break}
+  case"btnExport":download("zoning-checklist-"+(S.meta.parcel||"assessment").replace(/\W+/g,"_")+".json",JSON.stringify(S,null,1),"application/json");break;
+  case"btnImport":$("#fileImport").click();break;
+  case"btnCsv":download("zoning-results.csv",resultsCsv(),"text/csv");break;
+  case"btnWipe":if(confirm("Erase the working assessment and all saved assessments from this device? This cannot be undone.")){lsDel(WK);lsDel(SK);S=fresh();refreshAll();refreshSaved();toast("All data erased")}break;
+  case"btnPrint":buildReport();setTimeout(()=>window.print(),100);break;
+  case"btnMissCsv":download("missing-data-request.csv",["Item,Weight,Information to gather"].concat(allItems().filter(it=>credit(it).k==="pend").map(it=>[it.text,it.w,it.hint].map(csvCell).join(","))).join("\r\n"),"text/csv");break;
+  case"btnMissCopy":navigator.clipboard&&navigator.clipboard.writeText(missingText()).then(()=>toast("Copied"),()=>toast("Copy blocked by browser"));break;
+ }
+});
+document.addEventListener("input",e=>{
+ const el=e.target;
+ if(el.dataset.m){S.meta[el.dataset.m]=el.value;persist();return}
+ if(el.dataset.a){const id=el.closest("[data-ap]").dataset.ap;(S.appeals[id]=S.appeals[id]||{})[el.dataset.a]=el.value;persist();if(el.dataset.a==="status")renderTop();return}
+ if(el.dataset.f){const row=el.closest(".item"),id=row.dataset.id,d=S.items[id]||(S.items[id]={});d[el.dataset.f]=el.value;
+  if(el.dataset.f==="req"||el.dataset.f==="act"){const it=allItems().find(i=>i.id===id);calcRow(id);
+   if(it.num&&d.req!==""&&d.req!=null&&d.act!==""&&d.act!=null&&!isNaN(+d.req)&&!isNaN(+d.act)){const pass=it.num.kind==="min"?+d.act>=+d.req:+d.act<=+d.req;setStatus(id,pass?"c":"n",true);renderTop()}}
+  persist();return}
+});
+["fSearch","fCat","fStat"].forEach(i=>$("#"+i).addEventListener("input",applyFilters));
+$("#fileImport").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
+ rd.onload=()=>{try{const o=JSON.parse(rd.result);if(!o||typeof o!=="object"||!o.items)throw 0;S=Object.assign(fresh(),o);persist();refreshAll();toast("Imported")}catch(x){toast("Not a valid backup file")}};rd.readAsText(f);e.target.value=""});
+$("#confToggle").addEventListener("change",e=>document.body.classList.toggle("conf",e.target.checked));
+$("#optGranted").addEventListener("change",e=>{S.opt.granted=e.target.checked;persist();renderTop()});
+["rOnlyIssues","rRedact","rAppeals"].forEach(i=>$("#"+i).addEventListener("change",buildReport));
+window.addEventListener("beforeprint",()=>{if($("#tab-report").classList.contains("on"))buildReport()});
+
+/* ---------- INIT ---------- */
+(function(){try{const w=lsGet(WK);if(w){const o=JSON.parse(w);if(o&&o.items)S=Object.assign(fresh(),o)}}catch(e){}
+ refreshAll();refreshSaved()})();
+</script>
+</body>
+</html>
